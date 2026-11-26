@@ -1,0 +1,47 @@
+/* Extension preferences and browser-specific integration. */
+html[data-d24] {
+  color-scheme: dark;
+  --d24-hue: 310;
+  --accent-1: oklch(75% 0.12 var(--d24-hue));
+  --accent-2: oklch(70% 0.12 var(--d24-hue));
+  --accent-3: oklch(65% 0.12 var(--d24-hue));
+  --accent-4: oklch(60% 0.12 var(--d24-hue));
+  --accent-5: oklch(55% 0.12 var(--d24-hue));
+}
+html[data-d24][data-d24-accent='green'] { --d24-hue: 170; }
+html[data-d24][data-d24-accent='cyan'] { --d24-hue: 215; }
+html[data-d24][data-d24-accent='red'] { --d24-hue: 0; }
+html[data-d24] body {
+  --font: 'DM Mono', 'Cascadia Mono', Consolas, 'Courier New', monospace;
+  --code-font: var(--font);
+  --gap: var(--d24-spacing, 12px);
+  --border-thickness: var(--d24-border-width, 2px);
+  --d24-top-bar-button-position: off;
+  --d24-small-user-panel: off;
+  --d24-ascii-titles: off;
+  --d24-ascii-loader: off;
+  --d24-custom-spotify-bar: off;
+  --top-bar-height: 32px;
+  --d24-panel-labels: on;
+  font-family: var(--font) !important;
+  font-size: var(--d24-font-size, 14px);
+  font-weight: 400;
+}
+html[data-d24]:not([data-d24-labels]) body { --d24-panel-labels: off; }
+html[data-d24] :is(button, input, textarea, select) { font-family: var(--font-primary) !important; }
+html[data-d24] :is([class*='peopleListItem_'], [class*='channel_'] [class*='name_'], [class*='messageContent_']) {
+  font-size: var(--d24-font-size, 14px) !important;
+}
+html[data-d24] :is(a, button, [role='button'], input, textarea, [contenteditable='true']):focus-visible {
+  outline: 2px solid var(--accent-2) !important;
+  outline-offset: 2px;
+}
+html[data-d24][data-d24-glow] :is(a, button, [role='button']):hover {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent-2), transparent 35%);
+}
+
+/* Native fullscreen removes the nav strip and the horizontal layout offset. */
+html[data-d24][data-d24-horizontal] :fullscreen .guilds__5e434 { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-d24] body { --d24-animations: off; --border-hover-transition: 0s; --list-item-transition: 0s; }
+}

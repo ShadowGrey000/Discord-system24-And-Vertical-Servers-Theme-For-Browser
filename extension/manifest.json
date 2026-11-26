@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Discord // system24",
+  "version": "1.0.1",
+  "description": "A system24 theme for Discord web: top server bar, labeled square panels, monospace text, and purple accents.",
+  "permissions": ["storage"],
+  "content_scripts": [{
+    "matches": ["https://discord.com/*"],
+    "css": ["base.css", "horizontal.css", "theme.css"],
+    "js": ["settings.js", "theme.js", "nav.js"],
+    "run_at": "document_start"
+  }],
+  "action": {
+    "default_title": "Discord // system24",
+    "default_popup": "popup.html"
+  }
+}

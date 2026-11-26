@@ -1,0 +1,17 @@
+:root { color-scheme: dark; font: 13px Consolas, "Courier New", monospace; background: #111; color: #ddd; }
+* { box-sizing: border-box; }
+body { width: 330px; margin: 0; padding: 20px; }
+header { color: #b58bce; font-size: 17px; margin-bottom: 20px; }
+header span { color: #aaa; } small { display: block; font-size: 10px; color: #777; margin-top: 8px; }
+label.switch, label.select { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 14px 0; }
+input { accent-color: #b58bce; } input[type="checkbox"] { width: 17px; height: 17px; }
+select, button { font: inherit; border: 1px solid #555; color: #ddd; background: #191919; padding: 7px; }
+fieldset { margin: 18px 0; padding: 14px; border: 1px solid #555; } legend { color: #999; }
+fieldset label { display: flex; justify-content: space-between; } output { color: #b58bce; }
+input[type="range"] { width: 100%; margin: 12px 0 18px; } input[type="range"]:last-child { margin-bottom: 0; }
+button { width: 100%; cursor: pointer; } button:hover, select:focus-visible, button:focus-visible { border-color: #b58bce; outline: 1px solid #b58bce; }
+p { color: #999; font-size: 11px; line-height: 1.6; } #status { min-height: 16px; font-size: 11px; color: #b58bce; }
+
+body { max-height: 590px; overflow-y: auto; }
+input[type="color"] { width: 42px; height: 28px; padding: 2px; border: 1px solid #555; background: #191919; }
+

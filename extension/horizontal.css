@@ -1,0 +1,92 @@
+/* Keep Discord's native vertical list coordinates for focus, drag, folders,
+   and scroll-into-view. Rotate only its viewport inside an unrotated frame. */
+html[data-d24][data-d24-horizontal] .base__5e434 {
+  --d24-channel-width: clamp(220px, calc(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width)), 480px);
+  --d24-nav-size: calc(var(--guildbar-avatar-size) + var(--custom-guild-list-padding) * 2 + var(--border-thickness) * 2 + 6px + var(--gap));
+  grid-template-areas: 'titleBar titleBar' 'guildsList guildsList' 'notice notice' 'channelsList page';
+  grid-template-columns: [start] calc(var(--d24-channel-width) + var(--gap) * 2) [channelsEnd] 1fr [end];
+  grid-template-rows: [top] var(--custom-app-top-bar-height) [titleBarEnd] var(--d24-nav-size) [navEnd] min-content [noticeEnd] 1fr [end];
+}
+html[data-d24][data-d24-horizontal] .content__5e434 { margin-top: 0; }
+html[data-d24][data-d24-horizontal] .sidebar__5e434:not(.hidden__5e434) { display: contents; }
+html[data-d24][data-d24-horizontal] .guilds__5e434 {
+  container-type: inline-size;
+  grid-area: guildsList;
+  position: relative !important;
+  width: auto;
+  min-width: 0;
+  height: calc(var(--d24-nav-size) - var(--gap));
+  margin: 0 var(--gap) var(--gap);
+  rotate: none;
+  overflow: visible;
+}
+html[data-d24][data-d24-horizontal] .tree_ef3116 {
+  position: absolute;
+  top: 0;
+  left: calc(var(--guildbar-avatar-size) + var(--custom-guild-list-padding) * 2 + var(--gap));
+  width: calc(var(--d24-nav-size) - var(--gap) - var(--border-thickness) * 2);
+  height: calc(100cqw - var(--guildbar-avatar-size) - var(--custom-guild-list-padding) * 2 - var(--gap));
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  transform-origin: top left;
+  transform: rotate(-90deg) translateX(-100%);
+}
+html[data-d24][data-d24-horizontal] .scroller_ef3116 {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: var(--custom-guild-list-padding) 0 !important;
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+  scrollbar-width: thin;
+}
+html[data-d24][data-d24-horizontal] .scroller_ef3116::-webkit-scrollbar { width: 6px; height: 0; }
+html[data-d24][data-d24-horizontal] .scroller_ef3116::-webkit-scrollbar-thumb { background: var(--text-muted); }
+html[data-d24][data-d24-horizontal] :is(.wrapper__6e9f8, .folderPreview__48112, .folderIconWrapper__48112, .lowerBadge_cc5dd2, .upperBadge_cc5dd2) { rotate: 90deg; }
+html[data-d24][data-d24-horizontal] .childWrapper__6e9f8 { rotate: none; }
+/* Home is pinned outside the scroller. Native unread badges remain on servers;
+   vertical rail NEW overlays would cover the first/last icon after rotation. */
+html[data-d24][data-d24-horizontal] :is(.listItem__650eb:has([data-list-item-id='guildsnav___home']), [data-guilds-bar-home], .unreadMentionsIndicatorTop_ef3116, .unreadMentionsIndicatorBottom_ef3116) { display: none !important; }
+html[data-d24] [data-d24-home] { display: none; }
+html[data-d24][data-d24-horizontal] [data-d24-home] {
+  position: absolute;
+  left: var(--custom-guild-list-padding);
+  top: calc((var(--d24-nav-size) - var(--gap) - var(--border-thickness) * 2 - var(--guildbar-avatar-size)) / 2);
+  display: grid;
+  place-items: center;
+  width: var(--guildbar-avatar-size);
+  height: var(--guildbar-avatar-size);
+  background: var(--accent-2);
+  color: var(--bg-4);
+  z-index: 2;
+  text-decoration: none;
+}
+html[data-d24][data-d24-horizontal] [data-d24-home]:hover { background: var(--accent-1); }
+html[data-d24][data-d24-horizontal] [data-d24-home] svg { width: 70%; height: 70%; fill: currentColor; }
+html[data-d24][data-d24-horizontal] .sidebarList__5e434 {
+  width: var(--d24-channel-width);
+  margin: 0 var(--gap) calc(var(--custom-app-panels-height, 0px) + var(--gap) * 2);
+}
+html[data-d24][data-d24-horizontal] .panels__5e434 {
+  position: absolute;
+  left: var(--gap);
+  right: auto;
+  bottom: var(--gap);
+  width: var(--d24-channel-width);
+}
+html[data-d24][data-d24-horizontal] .sidebarResizeHandle__5e434 {
+  position: absolute;
+  left: calc(var(--d24-channel-width) + var(--gap));
+  top: calc(var(--custom-app-top-bar-height) + var(--d24-nav-size));
+  bottom: var(--gap);
+}
+html[data-d24][data-d24-horizontal] .base__5e434[data-fullscreen='true'] {
+  grid-template-rows: [top] min-content [titleBarEnd] 0px [navEnd] min-content [noticeEnd] 1fr [end];
+}
+html[data-d24][data-d24-horizontal] .base__5e434[data-fullscreen='true'] .guilds__5e434 { display: none; }

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Discord // system24</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+  <header>Discord <span>// system24</span><small>WEB THEME · v1.0.1</small></header>
+  <label class="switch"><span>Theme enabled</span><input id="enabled" type="checkbox"></label>
+  <label class="select"><span>Accent</span><select id="accent"><option value="purple">Purple · reference</option><option value="green">Green</option><option value="cyan">Cyan</option><option value="red">Red</option></select></label>
+  <fieldset><legend>Layout</legend>
+    <label class="switch"><span>Server bar at the top</span><input id="horizontal" type="checkbox"></label>
+    <label class="switch"><span>Panel labels</span><input id="labels" type="checkbox"></label>
+    <label for="fontSize">Text size <output id="fontSizeValue"></output></label><input id="fontSize" type="range" min="12" max="18" step="1">
+    <label for="spacing">Panel spacing <output id="spacingValue"></output></label><input id="spacing" type="range" min="8" max="24" step="1">
+    <label for="borderWidth">Border thickness <output id="borderWidthValue"></output></label><input id="borderWidth" type="range" min="1" max="3" step="1">
+  </fieldset>
+  <label class="switch"><span>Text glow on hover</span><input id="glow" type="checkbox"></label>
+  <button id="reset" type="button">Reset appearance</button>
+  <p>Changes apply immediately to open Discord web tabs. Scroll over the top bar to reach more servers. The Discord logo opens Friends.</p>
+  <div id="status" role="status" aria-live="polite"></div>
+  <script src="settings.js"></script><script src="popup.js"></script>
+</body></html>
